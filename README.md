@@ -3,7 +3,7 @@
 
 ## About
 
-I've used Garmin devices to track my physical activities for a number of years and am generally happy with them for that purpose. I have been annoyed by the file naming conventions used when data is exported from the devices. This is a utility that renames the FIT files to use a more human readable name that provides a chronological context at a glance. Currently, it handles file naming conventions from two models that I have access to - a Forerunner 235 and a Forerunner 645.
+I've used Garmin devices to track my physical activities for a number of years and am generally happy with them for that purpose. I have been annoyed by the file naming conventions used when data is exported from the devices. This is a utility that renames the FIT files to use a more human readable name that provides a chronological context at a glance. Currently, it handles file naming conventions from two models that I have access to - a Forerunner 235 and a Forerunner 645. The BASH version has been tested on Linux; YMMV on macOS.
 
 
 
@@ -11,9 +11,14 @@ I've used Garmin devices to track my physical activities for a number of years a
 
 
 ```sh
+# PowerShell version
 .\garmin-fit-rename.ps1 -SRCDIR C:\Path\To\Directory\With\FITFiles
+
+# BASH version
+./garmin-fit-rename.sh -s /path/to/directory/with/fit/files
 ```
 
+This will copy all the FIT files that were successfully processed to a directory on the current user's desktop (PowerShell) or the user's home directory (BASH).
 
 
 ## Contributing
