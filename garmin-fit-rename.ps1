@@ -22,6 +22,27 @@ function sanityCheck
     }
 }
 
+function convertFromBase36
+{
+    param (
+        [parameter(Mandatory=$True, HelpMessage="Alphadecimal string to convert")]
+        [string]$base36Num = ""
+    )
+    
+    $alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
+    $inputarray = $base36Num.tolower().tochararray()
+    [array]::reverse($inputarray)
+    [long]$decNum = 0
+    $pos = 0
+
+    foreach ($c in $inputarray)
+    {
+        $decNum += $alphabet.IndexOf($c) * [long][Math]::Pow(36, $pos)
+        $pos++
+    }
+    $decNum
+}
+
 function FR645
 {
     param (
