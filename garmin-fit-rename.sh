@@ -42,7 +42,7 @@ fr235() {
         if [[ $n == 0 && ${nchar} -lt 10 ]]; then
             newfname+="1${nchar}"
         elif [[ $n == 0 && ${nchar} -ge 10 ]]; then
-            newfname+="2${nchar:1:1}"
+            newfname+="2$(( nchar % 10 ))"
         elif [[ ( $n == 1 || $n == 2 || $n == 3 ) && ${nchar} -lt 10 ]]; then
             newfname+="0${nchar}"
         elif [[ $n == 4 || $n == 5 || $n == 6 || $n == 7 ]]; then
