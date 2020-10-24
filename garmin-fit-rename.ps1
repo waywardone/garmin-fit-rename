@@ -86,6 +86,8 @@ function FR235
 
         if ( $n -eq 0 -and $NCHAR -lt 10 ) {
             $NEWNAME = $NEWNAME + "1$NCHAR"
+        } elseif ( $n -eq 0 -and $NCHAR -ge 10 ) {
+            $NEWNAME = $NEWNAME + "2" + $NCHAR%10
         } elseif ( ($n -eq 1 -or $n -eq 2 -or $n -eq 3) -and $NCHAR -lt 10 ) {
             $NEWNAME = $NEWNAME + "0$NCHAR"
         } elseif ( $n -eq 4 -or $n -eq 5 -or $n -eq 6 -or $n -eq 7 ) {
@@ -121,7 +123,7 @@ foreach ($f in $files) {
     if ($fname -match "\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.fit") {
         # Example: 2019-09-01-06-40-57.fit
         $NEWNAME = FR645($fname)
-    } elseif ($fname -match "\d{1}[1-9ABC]{1}[1-9A-V]{1}[1-9A-N]{1}[\d]{4}") {
+    } elseif ($fname -match "[0-9A-Z]{1}[1-9ABC]{1}[1-9A-V]{1}[1-9A-N]{1}[\d]{4}") {
         # Example: 96FG1906.FIT
         $NEWNAME = FR235($fname)
     } else {

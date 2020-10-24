@@ -41,6 +41,8 @@ fr235() {
         # 1st character is the year
         if [[ $n == 0 && ${nchar} -lt 10 ]]; then
             newfname+="1${nchar}"
+        elif [[ $n == 0 && ${nchar} -ge 10 ]]; then
+            newfname+="2${nchar:1:1}"
         elif [[ ( $n == 1 || $n == 2 || $n == 3 ) && ${nchar} -lt 10 ]]; then
             newfname+="0${nchar}"
         elif [[ $n == 4 || $n == 5 || $n == 6 || $n == 7 ]]; then
@@ -96,7 +98,7 @@ main() {
         # Example: 2019-09-01-06-40-57.fit
         FR645Pattern="([0-9]{4})\-([0-9]{2})\-([0-9]{2})\-([0-9]{2})\-([0-9]{2})\-([0-9]{2})\.([Ff][Ii][Tt])"
         # Example: 96FG1906.FIT
-        FR235Pattern="([0-9]{1}[1-9ABC]{1}[1-9A-V]{1}[1-9A-N]{1}[0-9]{4})\.([Ff][Ii][Tt])"
+        FR235Pattern="([0-9A-Z]{1}[1-9ABC]{1}[1-9A-V]{1}[1-9A-N]{1}[0-9]{4})\.([Ff][Ii][Tt])"
 
         if [[ $basename =~ $FR645Pattern ]]; then
             Y=${BASH_REMATCH[1]}
