@@ -2,10 +2,7 @@
 
 fr235() {
 	local fitname=$1
-    # Establish current millennium and century to add to a Garmin
-    # single digit year number. We hope they will jump from 9 (2019) to K (2020),
-    # else the single digit padding we do further down with newfname+="1${nchar}" must be
-    # changed to newfname+="2${nchar}" when entering the next decade.
+    # Establish current millennium and century to add to a Garmin single digit year number
 
     YEAR=$(date +%Y)
     YEARM=${YEAR:0:1}
