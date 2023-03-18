@@ -50,7 +50,7 @@ function FR645
         [string] $name = ""
     )
     
-    $NEWNAME = $name -replace "(\d+)-(\d+)-(\d+)-(\d+)-(\d+)-(\d+)\.[a-zA-Z]*",'$1$2$3-$4$5$6.fit'
+    $NEWNAME = $name -replace "(\d+)-(\d+)-(\d+)-(\d+)-(\d+)-(\d+)\.([a-zA-Z]*)",'$1$2$3-$4$5$6.$7'
     return $NEWNAME
 }
 
@@ -120,7 +120,7 @@ foreach ($f in $files) {
     $fext = $file.Extension
     $fname = $file.Name
 
-    if ($fname -match "\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.fit") {
+    if ($fname -match "\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.[a-zA-Z]*") {
         # Example: 2019-09-01-06-40-57.fit
         $NEWNAME = FR645($fname)
     } elseif ($fname -match "[0-9A-Z]{1}[1-9ABC]{1}[1-9A-V]{1}[1-9A-N]{1}[\d]{4}") {
